@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>React Basics</title>
+  </head>
+  <body>
+    <div class="js-container"></div>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+
+      function Counter({currCount,setCount})
+      {
+        function changeButtonText()
+        {
+            setCount(currCount+1);
+        }
+
+        return (<button onClick={changeButtonText}
+        >Clicked {currCount} {currCount==1 ? "time" : "times"}
+        </button>);
+
+      }
+      function App()
+      {
+         const [currCount,setCount]= React.useState(0);
+
+        function resetFunc()
+        {
+            setCount(0);
+        }
+            
+        return(
+            <>
+            <Counter 
+            currCount={currCount}
+             setCount={setCount}/>
+
+            <Counter 
+            currCount={currCount} 
+            setCount={setCount}/>
+
+            <button onClick={resetFunc}>reset</button>
+
+            </>
+        )
+        
+      }
+
+const container = document.querySelector('.js-container');
+ReactDOM.createRoot(container).render(<App></App>);
+
+     
+    </script>
+  </body>
+</html>
+
