@@ -8,6 +8,7 @@ export function HomePage()
 
         <Header />
         <title>ecommerce website</title>
+        <link rel="icon" type="image/svg+xml" href="/home-favicon.png" />
          
 
     <div className="home-page">
