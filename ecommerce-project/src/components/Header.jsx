@@ -1,13 +1,12 @@
-import '../pages/header.css'
-import { NavLink } from 'react-router'
+import "../pages/header.css";
+import { NavLink } from "react-router";
 import logoWhite from "../assets/images/logo-white.png";
 import MobilelogoWhite from "../assets/images/mobile-logo-white.png";
 
-export function Header({cart}) {
+export function Header({ cart }) {
   let totalQuantity = 0;
   cart.forEach((cartItem) => {
-    totalQuantity+=cartItem.quantity;
-    
+    totalQuantity += cartItem.quantity;
   });
   return (
     <div className="header">
