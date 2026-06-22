@@ -1,11 +1,18 @@
-import { Header } from '../components/header'
+// From lesson 6 exercise solutions.
+import { Header } from '../components/Header';
+import './NotFound.css';
 
-export function NotFound()
-{
-    return(
-        <>
-        <Header></Header>
-        <h1>Page Not Found</h1>
-        </>
-    );
+export function NotFound() {
+  return (
+    <>
+      <title>404 Page Not Found</title>
+      <link rel="icon" type="image/svg+xml" href="home-favicon.png" />
+
+      <Header />
+
+      <div className="not-found-message">
+        Page not found
+      </div>
+    </>
+  );
 }

@@ -4,6 +4,7 @@ import logoWhite from "../assets/images/logo-white.png";
 import MobilelogoWhite from "../assets/images/mobile-logo-white.png";
 
 export function Header({ cart }) {
+  console.log("Header cart:", cart);
   let totalQuantity = 0;
   cart.forEach((cartItem) => {
     totalQuantity += cartItem.quantity;
