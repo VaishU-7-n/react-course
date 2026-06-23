@@ -1,41 +1,62 @@
 import "../pages/header.css";
 import { NavLink } from "react-router";
-import logoWhite from "../assets/images/logo-white.png";
 import MobilelogoWhite from "../assets/images/mobile-logo-white.png";
-
+import { useState } from 'react';
+import { Link, useNavigate , useSearchParams } from 'react-router';
 export function Header({ cart }) {
-  console.log("Header cart:", cart);
+
+  const [searchParams] = useSearchParams();
+  const searchText = searchParams.get('search');
+  
+  const navigate = useNavigate();
+  const [search, setSearch] = useState(searchText || '');
+
+  const updateSearchInput = (event) => {
+    setSearch(event.target.value);
+  };
+
+  const searchProducts = () => {
+    navigate(`/?search=${search}`);
+  };
+
   let totalQuantity = 0;
+
   cart.forEach((cartItem) => {
     totalQuantity += cartItem.quantity;
   });
+
   return (
     <div className="header">
       <div className="left-section">
-        <NavLink to="/" className="header-link">
-          <img className="logo" src={logoWhite} />
-          <img className="mobile-logo" src={MobilelogoWhite} />
-        </NavLink>
+        <Link to="/" className="header-link">
+          <img className="logo"
+            src="images/logo-white.png" />
+          <img className="mobile-logo"
+            src="images/mobile-logo-white.png" />
+        </Link>
       </div>
 
       <div className="middle-section">
-        <input className="search-bar" type="text" placeholder="Search" />
+        <input className="search-bar" type="text" placeholder="Search"
+          value={search} onChange={updateSearchInput} />
 
-        <button className="search-button">
+        <button className="search-button"
+          onClick={searchProducts}>
           <img className="search-icon" src="images/icons/search-icon.png" />
         </button>
       </div>
 
       <div className="right-section">
-        <NavLink className="orders-link header-link" to="/orders">
-          <span className="orders-text">Orders</span>
-        </NavLink>
+        <Link className="orders-link header-link" to="/orders">
 
-        <NavLink className="cart-link header-link" to="/checkout">
+          <span className="orders-text">Orders</span>
+        </Link>
+
+        <Link className="cart-link header-link" to="/checkout">
           <img className="cart-icon" src="images/icons/cart-icon.png" />
           <div className="cart-quantity">{totalQuantity}</div>
           <div className="cart-text">Cart</div>
-        </NavLink>
+        </Link>
       </div>
     </div>
   );
