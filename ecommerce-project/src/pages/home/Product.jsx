@@ -51,6 +51,7 @@ export function Product({product , loadCart}) {
         <select
           value={quantity}
           onChange={selectQuantity}
+          data-testid="quantity-selector"
         >
           <option value="1">1</option>
           <option value="2">2</option>
@@ -67,7 +68,9 @@ export function Product({product , loadCart}) {
 
       <div className="product-spacer"></div>
 
-      <div className="added-to-cart" style={{opacity : message ? 1 : 0 }}>
+      <div className="added-to-cart" 
+      style={{opacity : message ? 1 : 0 }}
+      >
         <img src="images/icons/checkmark.png" />
         Added
       </div>
